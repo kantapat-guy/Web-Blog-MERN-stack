@@ -1,0 +1,26 @@
+//Title of topics, content of blog, author of content, slug(url)
+
+const mongoose = require("mongoose");
+
+const blogSchema = mongoose.Schema({
+    title:{
+        type:String,
+        required:true
+    },
+    content:{
+        type:{},
+        required:true
+    },
+    author:{
+        type:String,
+        default:"Admin"
+    },
+//slug use for decorate URL for easy reading
+    slug:{
+        type:String,
+        lowercase:true,
+        unique:true
+    }
+},{timestamps:true})
+
+module.exports = mongoose.model("Blogs",blogSchema);
